@@ -78,6 +78,8 @@ Before you begin, ensure you have the following installed on your system:
 
    - The `-p 5050:80` flag maps port `5050` on your host machine to port `80` inside the container (where pgAdmin runs).
 
+  - The `-v pgadmin_data:/var/lib/pgadmin dpage/pgadmin4:latest` flag mounts the `pgadmin_data` volume to the container's data directory, ensuring data persistence.
+
 ### 3. **Access pgAdmin**
    Open your browser and go to:
 
