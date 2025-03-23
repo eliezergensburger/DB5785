@@ -31,6 +31,7 @@ Before you begin, ensure you have the following installed on your system:
 
    ```bash
    docker volume create postgres_data
+   docker volume create pgadmin_data
    ```
 
    This volume will ensure data persistence, even if the container is removed.
@@ -39,7 +40,7 @@ Before you begin, ensure you have the following installed on your system:
    Start the PostgreSQL container using the following command:
 
    ```bash
-   docker run --name postgres -e POSTGRES_PASSWORD=your_password -d -p 5432:5432 -v postgres_data:/var/lib/postgresql/data postgres
+   docker run -d --name my_postgres -e POSTGRES_PASSWORD=your_password -e POSTGRES_DB=db5785 -p 5432:5432 -v postgres_data:/var/lib/postgresql/data postgres
    ```
 
    Replace `your_password` with a secure password for the PostgreSQL superuser (`postgres`).
@@ -70,10 +71,10 @@ Before you begin, ensure you have the following installed on your system:
    Start the pgAdmin container using the following command:
 
    ```bash
-   docker run --name pgadmin -d -p 5050:80 -e PGADMIN_DEFAULT_EMAIL=admin@example.com -e PGADMIN_DEFAULT_PASSWORD=admin dpage/pgadmin4:latest
+   docker run -d --name pgadmin -p 5050:80 -e PGADMIN_DEFAULT_EMAIL=admin@example.com -e PGADMIN_DEFAULT_PASSWORD=admin123 -v pgadmin_data:/var/lib/pgadmin dpage/pgadmin4:latest
    ```
 
-   Replace `5050` with your desired port, and `admin@example.com` and `admin` with your preferred email and password for pgAdmin.
+   Replace `5050` with your desired port, and `admin@example.com` and `admin123` with your preferred email and password for pgAdmin.
 
    - The `-p 5050:80` flag maps port `5050` on your host machine to port `80` inside the container (where pgAdmin runs).
 
