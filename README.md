@@ -13,7 +13,7 @@ You will have to add to the [Workshop Files & Scripts](#workshop-id) section you
 Before you begin, ensure you have the following installed on your system:
 
 - **Docker**: [Install Docker](https://docs.docker.com/get-docker/)
-- **Docker Compose** (optional, but recommended): [Install Docker Compose](https://docs.docker.com/compose/install/)
+- **Docker Compose** (optional, but recommended): [Install Docker Compose](https://docs.docker.com/compose/install/   see also (https://www.youtube.com/watch?v=bu6IURMFZwQ)
 
 ---
 
