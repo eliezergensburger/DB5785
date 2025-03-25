@@ -130,6 +130,7 @@ This project sets up a development environment using Docker Compose to run Postg
 
 - Ensure your Python script (`your_script.py`) is set up to interact with the PostgreSQL database.
 - Adjust the `employee_id` range and sample data in your script as needed.
+- an example of such a script: [activities.py](code/python/activities.py) to be modified as needed.
 
 This setup provides a robust environment for developing applications that require a PostgreSQL database and a Python backend.
 
