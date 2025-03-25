@@ -14,6 +14,31 @@ Before you begin, ensure you have the following installed on your system:
 
 - **Docker**: [Install Docker](https://docs.docker.com/get-docker/)
 - **Docker Compose** (optional, but recommended): [Install Docker Compose](https://docs.docker.com/compose/install/)
+
+  ```bash
+  services:
+  db:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: mysecretpassword
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: youruser@g.jct.ac.il
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "5050:80"
+    depends_on:
+      - db
+volumes:
+  postgres_data:
+    external: false
+```
+
    - see also (https://www.youtube.com/watch?v=bu6IURMFZwQ)
 
 ---
