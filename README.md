@@ -77,9 +77,9 @@ docker-compose up
    - see also (https://www.youtube.com/watch?v=bu6IURMFZwQ)
 
 ---
-Dependencies: The !depends_on! directive ensures that the Python service starts after the PostgreSQL service is ready.
+Dependencies in pgadmin and python: The 'depends_on' directive ensures that the pgadmin and Python service starts after the PostgreSQL service is ready.
 
-## Setting Up PostgreSQL with Docker
+## Setting Up PostgreSQL with Docker (whithout Docker-Compose)
 
 ### 1. **Pull the PostgreSQL Docker Image**
    Download the official PostgreSQL Docker image with the following command:
