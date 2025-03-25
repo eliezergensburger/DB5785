@@ -15,7 +15,7 @@ Before you begin, ensure you have the following installed on your system:
 - **Docker**: [Install Docker](https://docs.docker.com/get-docker/)
 - **Docker Compose** (optional, but recommended): 
 
-- no need to install "Docker Compose" if you have installed Docker Desktop](https://docs.docker.com/compose/install/)
+- no need to install "Docker Compose" if you have installed Docker Desktop 
 
 ## Docker Compose Setup for PostgreSQL, pgAdmin, and Python
 
@@ -283,7 +283,7 @@ This workshop introduces key database concepts and provides hands-on practice in
 > ![add_image_to readme_with_relative_path](images/erd/addimagetoreadme.PNG)
 
 images/erd/one.jpg
-> ![add_image_one.png](images/erd/one.jpg)
+![add_image_one.png](images/erd/one.jpg)
 
   
    *(Upload or link to the ERD image or file)*
