@@ -77,7 +77,7 @@ docker-compose up
    - see also (https://www.youtube.com/watch?v=bu6IURMFZwQ)
 
 ---
-Dependencies: The ~depends_on~ directive ensures that the Python service starts after the PostgreSQL service is ready.
+Dependencies: The !depends_on! directive ensures that the Python service starts after the PostgreSQL service is ready.
 
 ## Setting Up PostgreSQL with Docker
 
