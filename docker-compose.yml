@@ -4,17 +4,20 @@ services:
     environment:
       POSTGRES_PASSWORD: mysecretpassword
     volumes:
-      - C:/workspace/postgres-docker/postgres_data:/var/lib/postgresql/data
+      - postgres_data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
   pgadmin:
     image: dpage/pgadmin4
     environment:
-      PGADMIN_DEFAULT_EMAIL: eliezer@g.jct.ac.il
+      PGADMIN_DEFAULT_EMAIL: youruser@g.jct.ac.il
       PGADMIN_DEFAULT_PASSWORD: admin
     ports:
       - "5050:80"
     depends_on:
       - db
+volumes:
+  postgres_data:
+    external: false
       
       
