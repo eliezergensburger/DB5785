@@ -15,7 +15,7 @@ Before you begin, ensure you have the following installed on your system:
 - **Docker**: [Install Docker](https://docs.docker.com/get-docker/)
 - **Docker Compose** (optional, but recommended): 
 
-- no need to install "Docker Compose" if you have installed Docker Desktop(https://docs.docker.com/compose/install/)
+- no need to install "Docker Compose" if you have installed Docker Desktop](https://docs.docker.com/compose/install/)
 
 ## Docker Compose Setup for PostgreSQL, pgAdmin, and Python
 
