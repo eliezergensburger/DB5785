@@ -1,14 +1,21 @@
+version: '3.9'
+
 services:
   db:
-    image: postgres
+    image: postgres:15
     environment:
+      POSTGRES_USER: yourusername
       POSTGRES_PASSWORD: mysecretpassword
+      POSTGRES_DB: yourdatabase
     volumes:
       - postgres_data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
+    networks:
+      - pgnetwork
+
   pgadmin:
-    image: dpage/pgadmin4
+    image: dpage/pgadmin4:6.21
     environment:
       PGADMIN_DEFAULT_EMAIL: youruser@g.jct.ac.il
       PGADMIN_DEFAULT_PASSWORD: admin
@@ -16,8 +23,23 @@ services:
       - "5050:80"
     depends_on:
       - db
+    networks:
+      - pgnetwork
+
+  python:
+    image: python:3.9-slim
+    volumes:
+      - ./your-python-scripts:/app
+    working_dir: /app
+    command: python your_script.py
+    networks:
+      - pgnetwork
+    depends_on:
+      - db
+
 volumes:
   postgres_data:
     external: false
-      
-      
+
+networks:
+  pgnetwork:
