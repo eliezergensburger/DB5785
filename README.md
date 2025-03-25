@@ -283,11 +283,15 @@ This workshop introduces key database concepts and provides hands-on practice in
 > ![add_image_to readme_with_relative_path](images/erd/addimagetoreadme.PNG)
 
 images/erd/one.jpg
-![add_image_one.png](images/erd/one.jpg)
+> ![add_image_one.png](images/erd/one.jpg)
 
-  
    *(Upload or link to the ERD image or file)*
+2. **Data Structure Diagram (DSD)**:
+   - Described the DSD for the model relationships and entities of the database structure.
+   - Focused on normalizing the database and ensuring scalability.
 
+   **[Add DSD Snapshot Here]**
+   
 3. **Creating Tables**:
    - Translated the ERD into actual tables, defining columns, data types, primary keys, and foreign keys.
    - Utilized SQL commands for table creation.
