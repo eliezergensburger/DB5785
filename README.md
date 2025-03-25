@@ -150,13 +150,15 @@ This project sets up a development environment using Docker Compose to run Postg
 
 - Ensure your Python script (`your_script.py`) is set up to interact with the PostgreSQL database.
 - Adjust the `employee_id` range and sample data in your script as needed.
-- an example for your `your_script.py` could be: (code/python/activities.py)
+- an example for your `your_script.py` could be: !(code/python/activities.py)
 This setup provides a robust environment for developing applications that require a PostgreSQL database and a Python backend.
    
   - see also (https://www.youtube.com/watch?v=bu6IURMFZwQ)
 
 ---
 Dependencies in pgadmin and python: The 'depends_on' directive ensures that the pgadmin and Python service starts after the PostgreSQL service is ready.
+
+---
 
 ## Setting Up PostgreSQL with Docker (whithout Docker-Compose)
 
@@ -286,6 +288,7 @@ images/erd/one.jpg
 > ![add_image_one.png](images/erd/one.jpg)
 
    *(Upload or link to the ERD image or file)*
+   
 2. **Data Structure Diagram (DSD)**:
    - Described the DSD for the model relationships and entities of the database structure.
    - Focused on normalizing the database and ensuring scalability.
