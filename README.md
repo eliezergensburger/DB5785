@@ -14,26 +14,26 @@ Before you begin, ensure you have the following installed on your system:
 
 - **Docker**: [Install Docker](https://docs.docker.com/get-docker/)
 - **Docker Compose** (optional, but recommended): 
--
+
 - no need to install "Docker Compose" if you have installed Docker Desktop](https://docs.docker.com/compose/install/)
 
-# Docker Compose Setup for PostgreSQL, pgAdmin, and Python
+## Docker Compose Setup for PostgreSQL, pgAdmin, and Python
 
 This project sets up a development environment using Docker Compose to run PostgreSQL, pgAdmin, and a Python service. The Python service includes `psycopg2-binary` for interacting with the PostgreSQL database.
 
-## Prerequisites
+### Prerequisites for Docker-Compose installation
 
 - Docker Desktop installed on your machine.
-- Basic knowledge of Docker and Docker Compose.
+- Basic knowledge of Docker and Docker Compose. (hic)
 
-## Project Structure
+### Project Structure
 
-. ├── docker-compose.yml ├── Dockerfile ├── requirements.txt └── your-python-scripts/ └── your_script.py
+. ├── docker-compose.yml ├── Dockerfile ├── requirements.txt ├── your-python-scripts/ ├── your_script.py
 
 
-## Services
+### Services
 
-### PostgreSQL
+#### PostgreSQL
 
 - **Image**: `postgres:15`
 - **Environment Variables**:
@@ -43,7 +43,7 @@ This project sets up a development environment using Docker Compose to run Postg
 - **Ports**: Exposes port `5432`.
 - **Volumes**: Persists data using `postgres_data` volume.
 
-### pgAdmin
+#### pgAdmin
 
 - **Image**: `dpage/pgadmin4:6.21`
 - **Environment Variables**:
@@ -52,14 +52,14 @@ This project sets up a development environment using Docker Compose to run Postg
 - **Ports**: Exposes port `5050`.
 - **Depends On**: Starts after the PostgreSQL service.
 
-### Python
+#### Python
 
 - **Image**: Built from the provided `Dockerfile`.
 - **Dependencies**: Installs `psycopg2-binary` and other Python packages from `requirements.txt`.
 - **Volumes**: Mounts `your-python-scripts` directory to `/app`.
 - **Command**: Runs `your_script.py`.
 
-## Setup Instructions
+### Setup Instructions
 
 1. **Clone the Repository**: Clone this repository to your local machine.
 
@@ -146,7 +146,7 @@ This project sets up a development environment using Docker Compose to run Postg
    - **Username**: `yourusername`
    - **Password**: `mysecretpassword`
 
-## Notes
+### Notes
 
 - Ensure your Python script (`your_script.py`) is set up to interact with the PostgreSQL database.
 - Adjust the `employee_id` range and sample data in your script as needed.
