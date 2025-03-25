@@ -127,6 +127,8 @@ By the end of this workshop, you will:
 - Gain hands-on experience with basic and advanced database operations.
 
 ----
+----
+
 <a name="workshop-id"></a>
 ## 📝 Workshop Files & Scripts (to be modified by the students) 🧑‍🎓 
 
