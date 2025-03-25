@@ -77,16 +77,7 @@ docker-compose up
    - see also (https://www.youtube.com/watch?v=bu6IURMFZwQ)
 
 ---
-Explanation:
- - Python Service:
-  --	Uses the python:3.9-slim image, which is a lightweight version of Python 3.9.
-  --	Mounts a local directory ./your-python-scripts to /app in the container. Replace ./your-python-scripts with the path to your Python scripts.
-  --	Sets the working directory to /app.
-  -- Runs a Python script your_script.py. Replace your_script.py with the name of your script.
-•	Network: The Python service is on the same pgnetwork as the PostgreSQL service, allowing them to communicate.
-•	Dependencies: The depends_on directive ensures that the Python service starts after the PostgreSQL service is ready.
-
-Dependencies: The depends_on directive ensures that the Python service starts after the PostgreSQL service is ready.
+Dependencies: The ~depends_on~ directive ensures that the Python service starts after the PostgreSQL service is ready.
 
 ## Setting Up PostgreSQL with Docker
 
