@@ -37,8 +37,8 @@ Before you begin, ensure you have the following installed on your system:
 volumes:
   postgres_data:
     external: false
-    
 ```
+
 and in terminal (like powershell):
 
 ```bash
