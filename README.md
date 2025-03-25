@@ -34,9 +34,9 @@ Before you begin, ensure you have the following installed on your system:
       - "5050:80"
     depends_on:
       - db
-volumes:
-  postgres_data:
-    external: false
+ volumes:
+   postgres_data:
+     external: false
 ```
 
 and in terminal (like powershell):
