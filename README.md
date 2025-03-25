@@ -14,7 +14,7 @@ Before you begin, ensure you have the following installed on your system:
 
 - **Docker**: [Install Docker](https://docs.docker.com/get-docker/)
 
-## option 1:  [Setting Up: PostgreSQL, pgAdmin, and Python with Docker-Compose] (DockerComposeSetup_for_PostgreSQL_pgAdmin_and_Python.md)
+## option 1:  [Setting Up: PostgreSQL, pgAdmin, and Python with Docker-Compose](DockerComposeSetup_for_PostgreSQL_pgAdmin_and_Python.md)
 
 ## option 2:  Setting Up PostgreSQL with Docker (whithout Docker-Compose)
 
