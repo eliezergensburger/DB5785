@@ -17,62 +17,18 @@ Before you begin, ensure you have the following installed on your system:
 -
 - no need to install "Docker Compose" if you have installed Docker Desktop](https://docs.docker.com/compose/install/)
 
-the file 'compose.yml' for Docker Compose:
+# Docker Compose Setup for PostgreSQL, pgAdmin, and Python
 
-```bash
- version: '3.9'
+This project sets up a development environment using Docker Compose to run PostgreSQL, pgAdmin, and a Python service. The Python service includes `psycopg2-binary` for interacting with the PostgreSQL database.
 
-services:
-  db:
-    image: postgres:15
-    environment:
-      POSTGRES_USER: yourusername
-      POSTGRES_PASSWORD: mysecretpassword
-      POSTGRES_DB: yourdatabase
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-    ports:
-      - "5432:5432"
-    networks:
-      - pgnetwork
+## Prerequisites
 
-  pgadmin:
-    image: dpage/pgadmin4:6.21
-    environment:
-      PGADMIN_DEFAULT_EMAIL: youruser@g.jct.ac.il
-      PGADMIN_DEFAULT_PASSWORD: admin
-    ports:
-      - "5050:80"
-    depends_on:
-      - db
-    networks:
-      - pgnetwork
+- Docker Desktop installed on your machine.
+- Basic knowledge of Docker and Docker Compose.
 
-  python:
-    image: python:3.9-slim
-    volumes:
-      - ./your-python-scripts:/app
-    working_dir: /app
-    command: python your_script.py
-    networks:
-      - pgnetwork
-    depends_on:
-      - db
+## Project Structure
 
-volumes:
-  postgres_data:
-    external: false
 
-networks:
-  pgnetwork:
-
-```
-
-and in terminal (like powershell):
-
-```bash
-docker-compose up
-```
 
    - see also (https://www.youtube.com/watch?v=bu6IURMFZwQ)
 
