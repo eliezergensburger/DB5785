@@ -62,8 +62,8 @@ This project sets up a development environment using Docker Compose to run Postg
 
 4. **Modify `docker-compose.yml`**: Ensure your `docker-compose.yml` is set up as follows:
 
-```yaml
-   services:
+   ```yaml
+ services:
   db:
     image: postgres:latest
     environment:
@@ -106,7 +106,7 @@ volumes:
 
 networks:
   pgnetwork:
-```
+   ```
 
 5. **Run the Setup**: Navigate to the directory containing your `docker-compose.yml` file and run:
 
