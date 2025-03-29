@@ -62,7 +62,7 @@ This project sets up a development environment using Docker Compose to run Postg
 
 4. **Modify `docker-compose.yml`**: Ensure your `docker-compose.yml` is set up as follows:
 
-    ```yaml
+ ```yaml
  services:
   db:
     image: postgres:latest
