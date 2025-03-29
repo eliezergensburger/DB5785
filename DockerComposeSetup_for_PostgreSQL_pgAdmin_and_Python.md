@@ -106,7 +106,7 @@ volumes:
 
 networks:
   pgnetwork:
-   ```
+  ```
 
 5. **Run the Setup**: Navigate to the directory containing your `docker-compose.yml` file and run:
 
