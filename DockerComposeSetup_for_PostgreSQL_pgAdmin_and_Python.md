@@ -80,7 +80,7 @@ This project sets up a development environment using Docker Compose to run Postg
   pgadmin:
     image: dpage/pgadmin4:latest
     environment:
-      PGADMIN_DEFAULT_EMAIL: eliezer@g.jct.ac.il
+      PGADMIN_DEFAULT_EMAIL: username@domain.com
       PGADMIN_DEFAULT_PASSWORD: admin
     ports:
       - "5050:80"
