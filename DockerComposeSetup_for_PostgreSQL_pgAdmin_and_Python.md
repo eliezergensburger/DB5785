@@ -52,12 +52,25 @@ This project sets up a development environment using Docker Compose to run Postg
 3. **Create `Dockerfile`**: Use the following Dockerfile:
 
     ```dockerfile
+    # Use the official Python image as a base
     FROM python:3.9-slim
+    
+    # Set the working directory in the container
     WORKDIR /app
+
+    # Copy the requirements file into the container
     COPY requirements.txt .
+    
+    # Install the dependencies
     RUN pip install --no-cache-dir -r requirements.txt
+    
+    # Copy the rest of your application code
     COPY . .
+
+    # Command to run your application
     CMD ["python", "your_script.py"]
+    # CMD ["python", "loader.py"]
+    
     ```
 
 4. **Modify `docker-compose.yml`**: Ensure your `docker-compose.yml` is set up as follows:
