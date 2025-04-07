@@ -122,7 +122,7 @@ networks:
    - **Username**: `yourusername`
    - **Password**: `mysecretpassword`
 
-## Notes
+## Notes for using Python
 
 - Ensure your Python script (`your_script.py`) is set up to interact with the PostgreSQL database.
 - Adjust the `employee_id` range and sample data in your script as needed.
