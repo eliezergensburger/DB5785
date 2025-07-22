@@ -43,10 +43,11 @@ This project sets up a development environment using Docker Compose to run Postg
 
 1. **Clone the Repository**: Clone this repository to your local machine.
 
-2. **Create `requirements.txt`**: Ensure `requirements.txt` includes `psycopg2-binary`:
+2. **Create `requirements.txt`**: Ensure `requirements.txt` includes `psycopg2-binary` (and optionally `pandas`) :
 
     ```
-    psycopg2-binary
+    psycopg2-binary==2.9.3
+    pandas==1.3.4
     ```
 
 3. **Create `Dockerfile`**: Use the following Dockerfile:
@@ -81,7 +82,7 @@ This project sets up a development environment using Docker Compose to run Postg
     image: postgres:latest
     environment:
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: admin
+      POSTGRES_PASSWORD: admin123
       POSTGRES_DB: db5785
     volumes:
       - postgres_data:/var/lib/postgresql/data
@@ -93,8 +94,9 @@ This project sets up a development environment using Docker Compose to run Postg
   pgadmin:
     image: dpage/pgadmin4:latest
     environment:
-      PGADMIN_DEFAULT_EMAIL: username@domain.com
-      PGADMIN_DEFAULT_PASSWORD: admin
+  #  for example: myname@g.jct.ac.il 
+      PGADMIN_DEFAULT_EMAIL: yourusername@domain.com 
+      PGADMIN_DEFAULT_PASSWORD: admin123
     ports:
       - "5050:80"
     depends_on:
