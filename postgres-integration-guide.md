@@ -252,7 +252,9 @@ SELECT * FROM sales.orders o JOIN inventory.products p ON o.product_id = p.id;
 | **High Security / Column Masking** | **FDW + Read-Only Mapping** |
 | **Simple Prototyping** | **Soft Keys** |
 
-## Addendum
+---
+
+# Addendum
 
 To "redefine" a column as a Soft Key when you are in the **Sales Database** referring to the **Inventory Database**, you simply treat the ID as raw data (a standard `INTEGER`). 
 
