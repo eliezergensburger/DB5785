@@ -252,4 +252,95 @@ SELECT * FROM sales.orders o JOIN inventory.products p ON o.product_id = p.id;
 | **High Security / Column Masking** | **FDW + Read-Only Mapping** |
 | **Simple Prototyping** | **Soft Keys** |
 
+### Addendum
+
+To "redefine" a column as a Soft Key when you are in the **Sales Database** referring to the **Inventory Database**, you simply treat the ID as raw data (a standard `INTEGER`). 
+
+Because PostgreSQL cannot "reach out" across the network to verify a Foreign Key in real-time during a standard `INSERT`, you omit the `REFERENCES` clause entirely.
+
+Here is exactly how you do it from the perspective of the **Consumer (Sales) Database**.
+
+---
+
+### 1. The SQL Definition (The "Soft Key")
+When creating your local table in `sales_db`, you define the column type to match the remote ID (usually `INTEGER` or `UUID`), but you leave off the constraint.
+
+```sql
+-- Run this in SALES_DB
+CREATE TABLE public.orders (
+    order_id SERIAL PRIMARY KEY,
+    
+    -- REDEFINED: No 'REFERENCES inventory_db...' here!
+    -- We call this a "Soft Key" or "Logical Key"
+    product_id INTEGER NOT NULL, 
+    
+    customer_name TEXT,
+    quantity INTEGER
+);
+```
+
+---
+
+### 2. How you "Connect" them (The Join)
+Even though there is no formal link in the table definition, you create the link **during the query** using the Foreign Data Wrapper (FDW) schema we set up earlier.
+
+```sql
+-- Querying from SALES_DB
+SELECT 
+    o.order_id,
+    o.customer_name,
+    p.name AS product_name,  -- This comes from the OTHER database
+    p.price                 -- This comes from the OTHER database
+FROM public.orders o
+JOIN remote_inventory.products p ON o.product_id = p.id;
+```
+
+---
+
+### 3. How to "Simulate" the Reference (Integrity)
+Since you don't have a `REFERENCES` constraint to stop users from entering a fake `product_id`, you have two ways to handle it from your side (the Sales DB):
+
+#### Option A: The "Check" Trigger (Internal Validation)
+If you want the Sales Database to error out if someone tries to insert a `product_id` that doesn't exist in the Inventory Database:
+
+```sql
+CREATE OR REPLACE FUNCTION validate_remote_product() 
+RETURNS TRIGGER AS $$
+BEGIN
+    -- Look into the FDW table to see if the ID exists
+    IF NOT EXISTS (SELECT 1 FROM remote_inventory.products WHERE id = NEW.product_id) THEN
+        RAISE EXCEPTION 'Product ID % does not exist in the Inventory Database', NEW.product_id;
+    END IF;
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER trg_orders_product_check
+BEFORE INSERT OR UPDATE ON public.orders
+FOR EACH ROW EXECUTE FUNCTION validate_remote_product();
+```
+
+#### Option B: The Application Validation (External Validation)
+If you are using a backend (Node, Python, PHP), your code handles the check:
+1. **App:** `SELECT id FROM remote_inventory.products WHERE id = 50;`
+2. **App:** If result is null, stop and show error.
+3. **App:** If result exists, `INSERT INTO public.orders (product_id, ...) VALUES (50, ...);`
+
+---
+
+### 4. Pro-Tip: Naming Conventions
+To make it clear to other developers that this `product_id` is a "Foreign" key that isn't enforced locally, many teams use a specific naming convention:
+
+*   Instead of `product_id`, name it `remote_product_id` or `ext_product_id`.
+*   Add a **comment** to the column in the database:
+    ```sql
+    COMMENT ON COLUMN public.orders.product_id IS 'Soft Key: References products(id) in inventory_db via FDW';
+    ```
+
+### Summary of the "Redefinition"
+1.  **Type:** Must match the remote side (usually `INT`).
+2.  **Constraint:** Remove `REFERENCES ...`.
+3.  **Bridge:** Use the `JOIN` on the FDW table for reports.
+4.  **Enforcement:** Use a **Trigger** if you want the DB to handle it, or **App Logic** if you want your code to handle it.
+5.  
 **End of Guide.**
